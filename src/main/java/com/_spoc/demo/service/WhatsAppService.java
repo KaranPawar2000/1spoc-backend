@@ -38,6 +38,8 @@ public class WhatsAppService {
 
         System.out.println("FROM: " + from + " MESSAGE: " + message);
 
+
+
         // 🔥 STEP 1: GET SESSION
         UserSession session = sessionRepository
                 .findByPhone(from)
@@ -47,6 +49,11 @@ public class WhatsAppService {
                     s.setCurrentStep("START");
                     return s;
                 });
+
+        System.out.println(
+                "CURRENT SESSION STEP: "
+                        + session.getCurrentStep()
+        );
 
         // 🔥 STEP 2: GET CURRENT STEP
         FlowStep currentStep = flowService.getStep(session.getCurrentStep());

@@ -17,6 +17,14 @@ public class FlowStep {
     private String message;
     private String nextStep;
 
-    @OneToMany(mappedBy = "flowStep", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @OneToMany(mappedBy = "flowStep", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<FlowOption> options;
+
+    @OneToMany(
+            mappedBy = "flowStep",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
     private List<FlowOption> options;
 }
